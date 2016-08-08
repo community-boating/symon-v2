@@ -1,0 +1,22 @@
+{
+  "name": "symon-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodejs ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coleji/symon-v2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coleji/symon-v2/issues"
+  },
+  "homepage": "https://github.com/coleji/symon-v2#readme",
+  "dependencies": {
+    "ini": "^1.3.4"
+  }
+}
