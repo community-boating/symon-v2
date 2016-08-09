@@ -6,7 +6,7 @@ module.exports = function() {
 			var regexp = /Current Temp\s*:\s*(\d*) C/
 			var result = regexp.exec(stdout)
 			if (result && result[1]) {
-				if (result[1] > 20) reject("Temperature was " + result[1] + "C")
+				if (result[1] > 80) reject("Temperature was " + result[1] + "C")
 				else resolve()
 			} else reject("Unable to determine temp")
 		})
