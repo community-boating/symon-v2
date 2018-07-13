@@ -16,6 +16,8 @@ var generateReqString = function(msg) {
 var send = function(reqString) {
 	reqString = JSON.stringify(reqString)
 
+	// host=api.sendgrid.com
+	// path=/v3/mail/send
 	var options = {
 		hostname: config.sendgrid.host,
 		path: config.sendgrid.path,
@@ -30,7 +32,7 @@ var send = function(reqString) {
 
 	var req = https.request(options, function(res) {
 		res.on('data', function(d) {
-			console.log(d)
+			console.log(d.toString('utf8'))
 		})
 	});
 
