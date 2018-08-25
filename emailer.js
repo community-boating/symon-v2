@@ -1,20 +1,23 @@
 var https = require('https');
 var fs = require('fs')
 var ini = require('ini');
+var os = require('os');
 
 var config = ini.parse(fs.readFileSync('./private.ini', 'utf-8'))
 
-var generateReqString = function(msg) {
+var generateReqString = function(didRun, msg) {
+	var result = didRun ? "BAD" : "FAIL";
 	return {
-		personalizations:[{ to: [{ email: "coleji@bc.edu" }] }],
-		from: { email: "database@community-boating.org" },
-		subject: "SYMON2",
+		personalizations:[{ to: [{ email: config.sendgrid.to }] }],
+		from: { email: config.sendgrid.from },
+		subject: "SYMON2 - " + result + " - " + os.hostname() + " - " + process.argv[2],
 		content: [{ type: "text/plain", value: msg }]
 	};
 }
 
-var send = function(reqString) {
-	reqString = JSON.stringify(reqString)
+var send = function(err) {
+	const [didRun, msg] = err;
+	const reqString = JSON.stringify(generateReqString(didRun, msg));
 
 	// host=api.sendgrid.com
 	// path=/v3/mail/send
@@ -45,6 +48,5 @@ var send = function(reqString) {
 };
 
 module.exports = {
-	generateReqString : generateReqString,
 	send : send
 }
