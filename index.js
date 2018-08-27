@@ -16,6 +16,8 @@ const test = (function() {
 	switch(testName) {
 	case "gpuTemp":
 		return checks.gpuTemp;
+	case "hdTemp":
+		return checks.hdTemp;
 	default:
 		return () => Promise.reject([false, "Unknown symon2 test " + testName])
 	}
