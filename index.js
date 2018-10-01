@@ -18,6 +18,10 @@ const test = (function() {
 		return checks.gpuTemp;
 	case "hdTemp":
 		return checks.hdTemp;
+	case "fileSize":
+		return checks.fileSize;
+	case "swap":
+		return checks.swap;
 	default:
 		return () => Promise.reject([false, "Unknown symon2 test " + testName])
 	}
