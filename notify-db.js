@@ -12,8 +12,6 @@ const salt = config.notify.salt
 
 const argString = process.argv.slice(3).join("$")
 
-const testName = process.argv[2];
-
 const dateString = moment().format("YYYY-MM-DD-HH")
 
 const mac = (function() {
@@ -34,20 +32,20 @@ const mac = (function() {
 }())
 
 
-function makeHash(resultCode) {
+function makeHash(testName, resultCode) {
 	const input = salt + os.hostname() + "-" + testName + "-" + argString + "-" + resultCode + "-" + mac + "-" + dateString + salt;
 	return md5(input).toUpperCase();
 };
 
 
-module.exports = function(resultCode) {
+module.exports = function(testName, resultCode) {
 	var postData = querystring.stringify({
 		'symon-host': os.hostname(),
 		'symon-program': testName,
 		'symon-argString': argString,
 		'symon-status': resultCode,
 		'symon-mac': mac,
-		'symon-hash': makeHash(resultCode)
+		'symon-hash': makeHash(testName, resultCode)
 	});
 
 	var options = {

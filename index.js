@@ -29,9 +29,11 @@ const test = (function() {
 
 test(process.argv.slice(3)).then(() => {
 	console.log("ok")
-	notify(CHECK_RESULTS.NORMAL);
+	notify(testName, CHECK_RESULTS.NORMAL);
 }, err => {
 	console.log("reject " + err)
-	notify(err[0] ? CHECK_RESULTS.BAD : CHECK_RESULTS.FAIL);
-	emailer.send(err)
+	notify(testName, err[0] ? CHECK_RESULTS.BAD : CHECK_RESULTS.FAIL);
+	emailer.send(err).catch(() => {
+		notify("can-email", CHECK_RESULTS.BAD);
+	})
 })

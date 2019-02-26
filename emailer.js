@@ -15,7 +15,7 @@ var generateReqString = function(didRun, msg) {
 	};
 }
 
-var send = function(err) {
+var send = err => new Promise((resolve, reject) => {
 	const [didRun, msg] = err;
 	const reqString = JSON.stringify(generateReqString(didRun, msg));
 
@@ -34,18 +34,34 @@ var send = function(err) {
 	};
 
 	var req = https.request(options, function(res) {
-		res.on('data', function(d) {
-			console.log(d.toString('utf8'))
-		})
+		var resData = '';
+		res.on('data', (chunk) => {
+			resData += chunk;
+		});
+		res.on('end', () => {
+			try {
+				if (resData.length == 0) resolve()
+				else {
+					var response = JSON.parse(resData);
+					console.log(response)
+					if (response["errors"]) reject()
+					else resolve(response);
+				}
+			} catch (e) {
+				console.log("caught ", e)
+				reject(e)
+			}
+		});
 	});
 
 	req.on('error', function(e) {
 		console.log(e);
+		reject(e)
 	});
 
 	req.write(reqString);
 	req.end();
-};
+});
 
 module.exports = {
 	send : send
