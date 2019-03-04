@@ -30,6 +30,8 @@ const test = (function() {
 		return checks.dfCheck;
 	case "mdadmCheck":
 		return checks.mdadmCheck;
+	case "curl":
+		return checks.curl;
 	case "mountCheck":
 		return args => {
 			return checks.dfCheck(args)

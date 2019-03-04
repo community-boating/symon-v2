@@ -5,5 +5,6 @@ module.exports = {
 	swap: require('./swap'),
 	fileExists: require('./fileExists'),
 	dfCheck: require('./dfCheck'),
-	mdadmCheck: require("./mdadmCheck")
+	mdadmCheck: require("./mdadmCheck"),
+	curl: require("./curl")
 }
