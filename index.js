@@ -26,6 +26,8 @@ const test = (function() {
 		return checks.swap;
 	case "fileExists":
 		return checks.fileExists;
+	case "dfCheck":
+		return checks.dfCheck;
 	case "backupRan":
 		var dir = process.argv[3]
 		var now = moment().format("YYYY-M-D")

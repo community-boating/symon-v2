@@ -3,5 +3,6 @@ module.exports = {
 	hdTemp : require('./hd-temp'),
 	fileSize: require('./file-size'),
 	swap: require('./swap'),
-	fileExists: require('./fileExists')
+	fileExists: require('./fileExists'),
+	dfCheck: require('./dfCheck')
 }
