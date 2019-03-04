@@ -4,5 +4,6 @@ module.exports = {
 	fileSize: require('./file-size'),
 	swap: require('./swap'),
 	fileExists: require('./fileExists'),
-	dfCheck: require('./dfCheck')
+	dfCheck: require('./dfCheck'),
+	mdadmCheck: require("./mdadmCheck")
 }
