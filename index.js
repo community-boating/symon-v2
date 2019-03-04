@@ -30,11 +30,22 @@ const test = (function() {
 		return checks.dfCheck;
 	case "mdadmCheck":
 		return checks.mdadmCheck;
+	case "mountCheck":
+		return args => {
+			return checks.dfCheck(args)
+			.then(() => Promise.resolve())
+			.catch(err => {
+				if (err[0]) return Promise.resolve();
+				else return Promise.reject([true, "Could not find device " + args[0] + " mounted at location " + args[1]])
+			})
+		}
 	case "backupRan":
-		var dir = process.argv[3]
-		var now = moment().format("YYYY-M-D")
-		var search = dir + "/" + now + ".tar.gz"
-		return dir => checks.fileExists([search])
+		return args => {
+			var dir = args[0]
+			var now = moment().format("YYYY-M-D")
+			var search = dir + "/" + now + ".tar.gz"
+			return checks.fileExists([search])
+		}
 	default:
 		return () => Promise.reject([false, "Unknown symon2 test " + testName])
 	}
