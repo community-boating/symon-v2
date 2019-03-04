@@ -1,3 +1,5 @@
+var moment = require('moment')
+
 var checks = require('./checks')
 var emailer = require('./emailer')
 var notify = require("./notify-db")
@@ -22,10 +24,19 @@ const test = (function() {
 		return checks.fileSize;
 	case "swap":
 		return checks.swap;
+	case "fileExists":
+		return checks.fileExists;
+	case "backupRan":
+		var dir = process.argv[3]
+		var now = moment().format("YYYY-M-D")
+		var search = dir + "/" + now + ".tar.gz"
+		return dir => checks.fileExists([search])
 	default:
 		return () => Promise.reject([false, "Unknown symon2 test " + testName])
 	}
 }())
+
+
 
 test(process.argv.slice(3)).then(() => {
 	console.log("ok")
