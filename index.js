@@ -32,6 +32,8 @@ const test = (function() {
 		return checks.mdadmCheck;
 	case "curl":
 		return checks.curl;
+	case "freeMem":
+		return checks.freeMem;
 	case "mountCheck":
 		return args => {
 			return checks.dfCheck(args)

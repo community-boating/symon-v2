@@ -6,5 +6,6 @@ module.exports = {
 	fileExists: require('./fileExists'),
 	dfCheck: require('./dfCheck'),
 	mdadmCheck: require("./mdadmCheck"),
-	curl: require("./curl")
+	curl: require("./curl"),
+	freeMem: require("./freeMem")
 }
