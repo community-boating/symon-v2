@@ -15,7 +15,7 @@ module.exports = function(args) {
 			if (result && result[6] == args[1]) {
 				// found that device and mountpoint
 				if (Number(result[5]) < Number(args[2])) resolve();
-				else reject([true, "df threshold for " + args[0] + " mounted at " + args[1] + "was " + args[2] + "% but freespace is " + result[5] + "%"])
+				else reject([true, "df threshold for " + args[0] + " mounted at " + args[1] + " was " + args[2] + "% but utilization is " + result[5] + "%"])
 			} else {
 				reject([false, "Unable to locate device " + args[0] + " mounted at " + args[1]])
 			}
