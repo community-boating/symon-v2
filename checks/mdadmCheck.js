@@ -8,7 +8,7 @@ var okStatuses = {
 
 module.exports = function(args) {
 	return new Promise(function(resolve, reject) {
-		exec('mdadm --detail ' + args[0] + ' | grep "State :"', function(error, stdout, stderr) {
+		exec('sudo mdadm --detail ' + args[0] + ' | grep "State :"', function(error, stdout, stderr) {
 			console.log(args[0]);
 			console.log(stdout.trim())
 			const regex = /State : (\S*)/
