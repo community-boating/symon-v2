@@ -3,7 +3,8 @@ const exec = require('child_process').exec;
 
 var okStatuses = {
 	"clean": true,
-	"active": true
+	"active": true,
+	"clean, degraded, recovering": true
 }
 
 module.exports = function(args) {
