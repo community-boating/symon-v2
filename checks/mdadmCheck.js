@@ -11,7 +11,7 @@ module.exports = function(args) {
 		exec('sudo mdadm --detail ' + args[0] + ' | grep "State :"', function(error, stdout, stderr) {
 			console.log(args[0]);
 			console.log(stdout.trim())
-			const regex = /State : (\S*)/
+			const regex = /State : (.*)/
 			const result = regex.exec(stdout.trim())
 			if (result && result[1]) {
 				if (okStatuses[result[1]]) resolve();
