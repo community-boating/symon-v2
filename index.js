@@ -30,6 +30,8 @@ const test = (function() {
 		return checks.dfCheck;
 	case "mdadmCheck":
 		return checks.mdadmCheck;
+	case "hdErrors":
+		return checks.hdErrors;
 	case "curl":
 		return checks.curl;
 	case "freeMem":

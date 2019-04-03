@@ -7,5 +7,6 @@ module.exports = {
 	dfCheck: require('./dfCheck'),
 	mdadmCheck: require("./mdadmCheck"),
 	curl: require("./curl"),
-	freeMem: require("./freeMem")
+	freeMem: require("./freeMem"),
+	hdErrors: require("./hdErrors")
 }
