@@ -1,3 +1,5 @@
+// args[0]: max temp C
+
 const exec = require('child_process').exec;
 
 module.exports = function(args) {

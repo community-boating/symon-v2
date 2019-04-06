@@ -1,3 +1,6 @@
+// args[0]: device
+// args[1]: max temp C
+
 const exec = require('child_process').exec;
 
 module.exports = function(args) {

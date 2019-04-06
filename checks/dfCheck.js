@@ -6,8 +6,6 @@ const exec = require('child_process').exec;
 
 module.exports = function(args) {
 	return new Promise(function(resolve, reject) {
-		const pathToFile = args[0];
-		const maxSize = Number(args[1])
 		exec("df | grep " + args[0], function(error, stdout, stderr) {
 			console.log(stdout)
 			var regex = /\s*(\S+)\s*(\d+)\s*(\d+)\s*(\d+)\s*(\d{1,2})%\s*(\S+)/
