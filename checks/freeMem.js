@@ -35,8 +35,9 @@ module.exports = function(args) {
 				: oldStyle(lines)
 			)
 			if (!freeMem) reject([false, "Unable to determine free memory"])
-			else if (Number(freeMem) < Number(args[0])) reject([true, "Free mem " + freeMem + "kB less than minimum of " + args[0] + "kB"])
-			else resolve()
+			else if (Number(freeMem) < Number(args[0])) {
+				reject([true, "Free mem " + Number(freeMem).toLocaleString() + "kB less than minimum of " + Number(args[0]).toLocaleString() + "kB"])
+			} else resolve()
 		})
 	});
 };

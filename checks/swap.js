@@ -9,8 +9,11 @@ module.exports = function(args) {
 			var result = regex.exec(stdout.trim())
 			if (result) {
 				if (Number(result[1]) == 0) reject([true, "Max swap is 0"])
-				else if (Number(result[2]) > maxSwap) reject([true, "Swap using " + result[2] + "KB; threshold was " + maxSwap])
-				else resolve()
+				else if (Number(result[2]) > maxSwap) {
+					reject([true, "Swap using " + Number(result[2]).toLocaleString() + "KB; threshold was " + maxSwap.toLocaleString()])
+				} else {
+					resolve()
+				}
 			} else reject([false, "Unable to determine swap use"])
 		})
 	});

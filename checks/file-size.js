@@ -10,7 +10,7 @@ module.exports = function(args) {
 		exec("stat " + pathToFile + " | grep Size | awk {'print $2'}", function(error, stdout, stderr) {
 			var result = Number(stdout.trim());
 			if (result) {
-				if (result > maxSize) reject([true, "Size of " + pathToFile + " was "+ result + "B; threshold was " + maxSize])
+				if (result > maxSize) reject([true, "Size of " + pathToFile + " was "+ result.toLocaleString() + "B; threshold was " + maxSize.toLocaleString()])
 				else resolve()
 			} else reject([false, "Unable to determine filesize of " + pathToFile])
 		})
