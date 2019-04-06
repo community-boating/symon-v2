@@ -17,7 +17,7 @@ module.exports = function(args) {
 			var regexp = /(\d*)/
 			var result = regexp.exec(stdout)
 			if (result && result[1]) {
-				if (result[1] > targetTemp) reject([true, "HD Temperature was " + result[1] + "C; threshold was " + targetTemp])
+				if (Number(result[1]) > targetTemp) reject([true, "HD Temperature was " + result[1] + "C; threshold was " + targetTemp])
 				else resolve()
 			} else reject([false, "Unable to determine HD temp"])
 		})
