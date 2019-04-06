@@ -2,15 +2,20 @@ var https = require('https');
 var fs = require('fs')
 var ini = require('ini');
 var os = require('os');
+var md5 = require('md5')
 
 var config = ini.parse(fs.readFileSync('./private.ini', 'utf-8'))
 
+
+
 var generateReqString = function(didRun, msg) {
-	var result = didRun ? "BAD" : "FAIL";
+	const seed = (new Date()).getTime()
+	const suffix = md5(seed).substr(1,6)
+	const result = didRun ? "BAD" : "FAIL";
 	return {
 		personalizations:[{ to: [{ email: config.sendgrid.to }] }],
 		from: { email: config.sendgrid.from },
-		subject: "SYMON2 - " + result + " - " + os.hostname() + " - " + process.argv[2],
+		subject: "SYMON2 - " + result + " - " + os.hostname() + " - " + process.argv[2]+  " - " + suffix,
 		content: [{ type: "text/plain", value: msg }]
 	};
 }
