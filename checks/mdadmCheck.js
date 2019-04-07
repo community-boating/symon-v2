@@ -3,7 +3,9 @@ const exec = require('child_process').exec;
 
 var okStatuses = {
 	"clean": true,
+	"clean, checking": true,
 	"active": true,
+	"active, checking": true,
 	"clean, degraded, recovering": true
 }
 
