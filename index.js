@@ -36,6 +36,8 @@ const test = (function() {
 		return checks.curl;
 	case "freeMem":
 		return checks.freeMem;
+	case "hpRaidErrors":
+		return checks.hpRaidErrors;
 	case "mountCheck":
 		return args => {
 			return checks.dfCheck(args)

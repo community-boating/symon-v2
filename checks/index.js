@@ -8,5 +8,6 @@ module.exports = {
 	mdadmCheck: require("./mdadmCheck"),
 	curl: require("./curl"),
 	freeMem: require("./freeMem"),
-	hdErrors: require("./hdErrors")
+	hdErrors: require("./hdErrors"),
+	hpRaidErrors: require("./hp-raid-errors")
 }
