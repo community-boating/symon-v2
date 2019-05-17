@@ -5,7 +5,6 @@ module.exports = function(args) {
 		exec(`sudo ssacli "controller slot=0 Array a physicaldrive all show detail" | grep Status`, function(error, stdout, stderr) {
 			var lines = stdout.trim().split('\n') || []
 			var errs = lines.reduce(function(ret, line) {
-				console.log(line)
 				var regex = /Status: (\w*)/
 				var regexResult = regex.exec(line)
 				if (!regexResult) return ret.concat(null);
