@@ -59,6 +59,10 @@ const test = (function() {
 	}
 }())
 
+const now = moment().format("YYYY-MM-DD HH:mm:ss")
+console.log("==================")
+console.log(now)
+console.log(`Running ${testName} with args '${process.argv.slice(3).join(" ")}'`)
 
 
 test(process.argv.slice(3)).then(() => {
