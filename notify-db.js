@@ -45,7 +45,8 @@ module.exports = function(testName, resultCode) {
 		'symon-argString': argString,
 		'symon-status': resultCode,
 		'symon-mac': mac,
-		'symon-hash': makeHash(testName, resultCode)
+		'symon-hash': makeHash(testName, resultCode),
+		'symon-version': 'V2'
 	});
 
 	var options = {
