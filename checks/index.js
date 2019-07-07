@@ -9,5 +9,6 @@ module.exports = {
 	curl: require("./curl"),
 	freeMem: require("./freeMem"),
 	hdErrors: require("./hdErrors"),
-	hpRaidErrors: require("./hp-raid-errors")
+	hpRaidErrors: require("./hp-raid-errors"),
+	hpHdTemp: require("./hp-hd-temp")
 }

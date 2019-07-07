@@ -38,6 +38,8 @@ const test = (function() {
 		return checks.freeMem;
 	case "hpRaidErrors":
 		return checks.hpRaidErrors;
+	case "hpHdTemp":
+		return checks.hpHdTemp;
 	case "mountCheck":
 		return args => {
 			return checks.dfCheck(args)
