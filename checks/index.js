@@ -10,5 +10,6 @@ module.exports = {
 	freeMem: require("./freeMem"),
 	hdErrors: require("./hdErrors"),
 	hpRaidErrors: require("./hp-raid-errors"),
-	hpHdTemp: require("./hp-hd-temp")
+	hpHdTemp: require("./hp-hd-temp"),
+	pm2: require("./pm2")
 }

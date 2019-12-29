@@ -28,6 +28,8 @@ const test = (function() {
 		return checks.fileExists;
 	case "dfCheck":
 		return checks.dfCheck;
+	case "pm2":
+		return checks.pm2;
 	case "mdadmCheck":
 		return checks.mdadmCheck;
 	case "hdErrors":
