@@ -28,7 +28,6 @@ module.exports = function(args) {
 		exec("free", function(error, stdout, stderr) {
 			var trimmed = stdout.trim();
 			var lines = trimmed.split('\n')
-			console.log(lines)
 			var freeMem = (
 				(lines.length == 3)
 				? newStyle(lines)

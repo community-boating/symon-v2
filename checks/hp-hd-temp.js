@@ -15,8 +15,6 @@ module.exports = function(args) {
 			var errs = lines.reduce(function(ret, line) {
 				var regex = /Current Temperature \(C\): (\d+)/
 				var regexResult = regex.exec(line)
-				//console.log(regexResult);
-				//console.log(regexResult[1] + " " + targetTemp + "  " + (Number(regexResult[1]) <= targetTemp));
 				if (!regexResult) return ret.concat(null);
 				else if (regexResult[1] && Number(regexResult[1]) <= targetTemp) return ret;
 				else return ret.concat([regexResult[1]]);

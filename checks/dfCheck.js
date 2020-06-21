@@ -7,7 +7,6 @@ const exec = require('child_process').exec;
 module.exports = function(args) {
 	return new Promise(function(resolve, reject) {
 		exec("df | grep " + args[0], function(error, stdout, stderr) {
-			console.log(stdout)
 			var regex = /\s*(\S+)\s*(\d+)\s*(\d+)\s*(\d+)\s*(\d{1,2})%\s*(\S+)/
 			var result = regex.exec(stdout)
 			if (result && result[6] == args[1]) {

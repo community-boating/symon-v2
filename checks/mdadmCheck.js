@@ -14,8 +14,6 @@ var okStatuses = {
 module.exports = function(args) {
 	return new Promise(function(resolve, reject) {
 		exec('sudo mdadm --detail ' + args[0] + ' | grep "State :"', function(error, stdout, stderr) {
-			console.log(args[0]);
-			console.log(stdout.trim())
 			const regex = /State : (.*)/
 			const result = regex.exec(stdout.trim())
 			if (result && result[1]) {
@@ -24,7 +22,6 @@ module.exports = function(args) {
 			} else {
 				reject([false, "Unable to get mdadm status for device " + args[0]])
 			}
-			console.log(result)
 			resolve()
 		})
 	});

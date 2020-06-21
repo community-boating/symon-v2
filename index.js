@@ -4,7 +4,20 @@ var checks = require('./checks')
 var emailer = require('./emailer')
 var notify = require("./notify-db")
 
-const testName = process.argv[2];
+const {nagiosMode, testName} = (function() {
+	const raw = process.argv[2];
+	if (raw.substr(0, 1) == "*") {
+		return {
+			nagiosMode: true,
+			testName: raw.substr(1)
+		};
+	} else {
+		return {
+			nagiosMode: false,
+			testName: raw
+		}
+	}
+}());
 
 const CHECK_RESULTS = {
 	NORMAL: 1,
@@ -63,19 +76,34 @@ const test = (function() {
 	}
 }())
 
-const now = moment().format("YYYY-MM-DD HH:mm:ss")
-console.log("==================")
-console.log(now)
-console.log(`Running ${testName} with args '${process.argv.slice(3).join(" ")}'`)
-
+if (!nagiosMode) {
+	const now = moment().format("YYYY-MM-DD HH:mm:ss")
+	console.log("==================")
+	console.log(now)
+	console.log(`Running ${testName} with args '${process.argv.slice(3).join(" ")}'`)
+}
 
 test(process.argv.slice(3)).then(() => {
 	console.log("ok")
-	notify(testName, CHECK_RESULTS.NORMAL);
+	if (nagiosMode) {
+		process.exit(0);
+	} else {
+		notify(testName, CHECK_RESULTS.NORMAL);
+	}
+	
 }, err => {
-	console.log("reject " + err)
-	notify(testName, err[0] ? CHECK_RESULTS.BAD : CHECK_RESULTS.FAIL);
-	emailer.send(err).catch(() => {
-		notify("can-email", CHECK_RESULTS.BAD);
-	})
+	if (nagiosMode) {
+		console.log(err[1]);
+		if (err[0]) {
+			process.exit(2); // bad
+		} else {
+			process.exit(3);  // unknown
+		}
+	} else {
+		console.log("reject " + err)
+		notify(testName, err[0] ? CHECK_RESULTS.BAD : CHECK_RESULTS.FAIL);
+		emailer.send(err).catch(() => {
+			notify("can-email", CHECK_RESULTS.BAD);
+		})
+	}
 })
