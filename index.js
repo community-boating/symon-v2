@@ -1,8 +1,6 @@
 var moment = require('moment')
 
 var checks = require('./checks')
-var emailer = require('./emailer')
-var notify = require("./notify-db")
 
 const {nagiosMode, testName} = (function() {
 	const raw = process.argv[2];
@@ -83,6 +81,12 @@ if (!nagiosMode) {
 	console.log(`Running ${testName} with args '${process.argv.slice(3).join(" ")}'`)
 }
 
+function notify(test, result) {
+	var doNotify = require("./notify-db");
+	doNotify(test, result);
+
+}
+
 test(process.argv.slice(3)).then(() => {
 	console.log("ok")
 	if (nagiosMode) {
@@ -102,6 +106,7 @@ test(process.argv.slice(3)).then(() => {
 	} else {
 		console.log("reject " + err)
 		notify(testName, err[0] ? CHECK_RESULTS.BAD : CHECK_RESULTS.FAIL);
+		var emailer = require('./emailer')
 		emailer.send(err).catch(() => {
 			notify("can-email", CHECK_RESULTS.BAD);
 		})
