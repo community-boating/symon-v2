@@ -1,5 +1,7 @@
 #!/bin/sh
+VERSION=`grep -oP '"version": "\K[\.0-9]*(?=")' package.json`
 
+sed -i "s/Version: .*/Version: $VERSION/g" deb-control
 rm dist/* -r
 mkdir dist/DEBIAN
 mkdir dist/usr
@@ -10,4 +12,5 @@ cp node_modules dist/usr/share/symon-v2/ -r
 cp checks dist/usr/share/symon-v2/ -r
 cp index.js dist/usr/share/symon-v2
 dpkg-deb --build dist
-mv dist.deb dist/symon-v2-1.0.0_amd64.deb
+mv dist.deb dist/symon-v2-${VERSION}_amd64.deb
+scp dist/symon-v2-${VERSION}_amd64.deb root@rsx.community-boating.org:/root/
