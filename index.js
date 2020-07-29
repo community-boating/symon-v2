@@ -29,6 +29,8 @@ const test = (function() {
 	switch(testName) {
 	case "gpuTemp":
 		return checks.gpuTemp;
+	case "date":
+		return checks.date;
 	case "hdTemp":
 		return checks.hdTemp;
 	case "fileSize":
@@ -87,11 +89,12 @@ function notify(test, result) {
 
 }
 
-test(process.argv.slice(3)).then(() => {
-	console.log("ok")
+test(process.argv.slice(3)).then(result => {
 	if (nagiosMode) {
+		if (result) console.log(result);
 		process.exit(0);
 	} else {
+		console.log("ok")
 		notify(testName, CHECK_RESULTS.NORMAL);
 	}
 	
