@@ -7,14 +7,13 @@ mkdir dist/DEBIAN
 mkdir dist/usr
 mkdir dist/usr/share
 mkdir dist/usr/share/symon-v2
-mkdir dist/usr/lib
-mkdir dist/usr/lib/nagios
-mkdir dist/usr/lib/nagios/plugins
+mkdir dist/usr/share/icinga2
+mkdir dist/usr/share/icinga2/include
 cp deb-control dist/DEBIAN/control
 cp node_modules dist/usr/share/symon-v2/ -r
 cp checks dist/usr/share/symon-v2/ -r
 cp index.js dist/usr/share/symon-v2
-cp nagios-checks.conf dist/usr/lib/nagios/plugins/symon_definitions.conf
+cp nagios-checks.conf dist/usr/share/icinga2/include/symon_definitions.conf
 dpkg-deb --build dist
 mv dist.deb dist/symon-v2-${VERSION}_amd64.deb
 scp dist/symon-v2-${VERSION}_amd64.deb root@rsx.community-boating.org:/root/
