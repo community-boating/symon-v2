@@ -12,7 +12,7 @@ module.exports = function(args) {
 				else if (Number(result[2]) > maxSwap) {
 					reject([true, "Swap using " + Number(result[2]).toLocaleString() + "KB; threshold was " + maxSwap.toLocaleString()])
 				} else {
-					resolve()
+					resolve("Swap using " + Number(result[2]).toLocaleString() + "KB; threshold is " + maxSwap.toLocaleString())
 				}
 			} else reject([false, "Unable to determine swap use"])
 		})
