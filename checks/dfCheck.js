@@ -11,7 +11,7 @@ module.exports = function(args) {
 			var result = regex.exec(stdout)
 			if (result && result[6] == args[1]) {
 				// found that device and mountpoint
-				if (Number(result[5]) < Number(args[2])) resolve();
+				if (Number(result[5]) < Number(args[2])) resolve("device: " + args[0] + " mounted at " + args[1] + "; utilization: " + result[5] + "% out of threshold: " + args[2] + "%");
 				else reject([true, "df threshold for " + args[0] + " mounted at " + args[1] + " was " + args[2] + "% but utilization is " + result[5] + "%"])
 			} else {
 				reject([false, "Unable to locate device " + args[0] + " mounted at " + args[1]])
