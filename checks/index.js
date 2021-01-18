@@ -16,4 +16,5 @@ module.exports = {
 	rebootRequired: require("./reboot-required"),
 	getMyPublicIP: require("./getMyPublicIP"),
 	versionNode: require("./versionNode"),
+	versionJava: require("./versionJava"),
 }

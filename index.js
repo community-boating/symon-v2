@@ -61,6 +61,8 @@ const test = (function() {
 		return checks.getMyPublicIP;
 	case "versionNode":
 		return checks.versionNode;
+	case "versionJava":
+		return checks.versionJava;
 	case "mountCheck":
 		return args => {
 			return checks.dfCheck(args)
