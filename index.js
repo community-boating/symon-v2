@@ -57,6 +57,8 @@ const test = (function() {
 		return checks.hpHdTemp;
 	case "rebootRequired":
 		return checks.rebootRequired;
+	case "getMyPublicIP":
+		return checks.getMyPublicIP;
 	case "mountCheck":
 		return args => {
 			return checks.dfCheck(args)

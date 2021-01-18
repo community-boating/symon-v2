@@ -13,5 +13,6 @@ module.exports = {
 	hpHdTemp: require("./hp-hd-temp"),
 	pm2: require("./pm2"),
 	date: require("./date"),
-	rebootRequired: require("./reboot-required")
+	rebootRequired: require("./reboot-required"),
+	getMyPublicIP: require("./getMyPublicIP"),
 }
