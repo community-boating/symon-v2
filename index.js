@@ -63,6 +63,8 @@ const test = (function() {
 		return checks.versionNode;
 	case "versionJava":
 		return checks.versionJava;
+	case "versionUbuntu":
+		return checks.versionUbuntu;
 	case "mountCheck":
 		return args => {
 			return checks.dfCheck(args)

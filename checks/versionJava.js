@@ -1,4 +1,4 @@
-// args[0]: expected nodejs major version
+// args[0]: expected java major version
 const exec = require('child_process').exec;
 
 module.exports = function (args) {
