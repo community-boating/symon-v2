@@ -12,5 +12,6 @@ module.exports = {
 	hpRaidErrors: require("./hp-raid-errors"),
 	hpHdTemp: require("./hp-hd-temp"),
 	pm2: require("./pm2"),
-	date: require("./date")
+	date: require("./date"),
+	rebootRequired: require("./reboot-required")
 }

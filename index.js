@@ -55,6 +55,8 @@ const test = (function() {
 		return checks.hpRaidErrors;
 	case "hpHdTemp":
 		return checks.hpHdTemp;
+	case "rebootRequired":
+		return checks.rebootRequired;
 	case "mountCheck":
 		return args => {
 			return checks.dfCheck(args)
