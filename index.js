@@ -59,6 +59,8 @@ const test = (function() {
 		return checks.rebootRequired;
 	case "getMyPublicIP":
 		return checks.getMyPublicIP;
+	case "versionNode":
+		return checks.versionNode;
 	case "mountCheck":
 		return args => {
 			return checks.dfCheck(args)
