@@ -17,5 +17,6 @@ module.exports = {
 	getMyPublicIP: require("./getMyPublicIP"),
 	versionNode: require("./versionNode"),
 	versionJava: require("./versionJava"),
-	versionUbuntu: require("./versionUbuntu")
+	versionUbuntu: require("./versionUbuntu"),
+	host: require("./host"),
 }
