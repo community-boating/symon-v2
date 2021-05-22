@@ -8,7 +8,8 @@ var okStatuses = {
 	"active, checking": true,
 	"clean, degraded, recovering": true,
 	"clean, resyncing (DELAYED)": true,
-	"active, resyncing (DELAYED)": true
+	"active, resyncing (DELAYED)": true,
+	"clean, degraded, resyncing (DELAYED)": true,
 }
 
 module.exports = function(args) {
